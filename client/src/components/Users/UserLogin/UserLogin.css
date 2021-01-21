@@ -1,0 +1,40 @@
+
+.login-info {
+    border: rgba(5, 5, 177, 0.712) solid 5px;
+    margin: 0 25rem;
+    box-shadow: 3px 3px 4px #888888,
+                -3px -3px 4px #888888;
+}
+
+.login-info h1 {
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+}
+
+.login-info label {
+    font-weight: bolder;
+    font-size: 1.10rem;
+}
+
+.login-info Input {
+    margin: 1rem;
+}
+
+.login-info button {
+    margin: 2rem 2rem;
+    border: rgb(51, 42, 42) solid 2px;
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    padding: 0.25rem 0.50rem;
+    font-size: 1rem;
+}
+
+.login-info button:hover {
+    background-color: rgb(51, 42, 42);
+}
+
+.login-info button:active {
+    transform: translateY(1px);
+}

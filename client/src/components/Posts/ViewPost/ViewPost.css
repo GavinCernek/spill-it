@@ -1,0 +1,75 @@
+
+.viewpost-body  {
+    border: rgba(5, 5, 177, 0.712) solid 4px;
+    margin: 4rem 10rem;
+    box-shadow: 3px 3px 4px #888888,
+                -3px -3px 4px #888888;
+}
+
+.viewpost-body h2 {
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    font-weight: bolder;
+    font-size: 2rem;
+    overflow: auto;
+}
+
+.viewpost-body a {
+    color: black;
+}
+
+.viewpost-body p {
+    padding: 0 1rem;
+    overflow: auto;
+}
+
+.like-post-like {
+    display: inline-block;
+}
+
+.like-post-like button {
+    display: inline;
+}
+
+.like-post-like p {
+    display: inline;
+    padding: 0 2rem;
+    font-weight: bolder;
+    font-size: large;
+    vertical-align: top;
+}
+
+.like-post-unlike {
+    display: inline-block;
+}
+
+.like-post-unlike button {
+    display: inline;
+    background-color: lightblue;
+    border: black solid 2px;
+}
+
+.like-post-unlike p {
+    display: inline;
+    padding: 0 2rem;
+    font-weight: bolder;
+    font-size: large;
+    vertical-align: top;
+}
+
+.comments-section {
+    border: rgb(51, 42, 42) solid 4px;
+    margin: 4rem 10rem;
+    box-shadow: 3px 3px 4px #888888,
+                -3px -3px 4px #888888;
+}
+
+.comments-section h1 {
+    text-align: left;
+    background-color: rgb(51, 42, 42);
+    color: white;
+    padding: 1rem 10rem;
+    margin-top: 0;
+}

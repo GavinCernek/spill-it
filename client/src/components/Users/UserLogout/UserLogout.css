@@ -1,0 +1,27 @@
+
+.logout-info h1 {
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    padding: 1rem 1rem;
+    margin: 0 15rem;
+    box-shadow: 3px 3px 4px #888888,
+    -3px -3px 4px #888888;
+}
+
+.logout-info button {
+    background-color: rgb(241, 244, 248);
+    font-size: 20px;
+    font-weight: bolder;
+    border: black solid 2px;
+    padding: 1rem 2rem;
+    margin: 2rem 5rem;
+}
+
+.logout-info button:hover {
+    background-color: rgb(51, 42, 42);
+    color: white;
+}
+
+.logout-info button:active {
+    transform: translateY(1px);
+}

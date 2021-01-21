@@ -1,0 +1,10 @@
+
+.textarea {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+    grid-template-areas: 
+        "label-container"
+        "textarea-box";
+}

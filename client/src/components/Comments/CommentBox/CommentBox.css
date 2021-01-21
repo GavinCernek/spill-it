@@ -1,0 +1,14 @@
+
+#submit-comment {
+    background-color: rgb(51, 42, 42);
+    border: black solid 1px;
+    color: white;
+    margin: 1rem;
+    padding: 0.50rem 0.75rem;
+    font-size: 15px;
+}
+
+#submit-comment:hover {
+    background-color: white;
+    color: black;
+}

@@ -1,0 +1,41 @@
+
+#edit-post-body {
+    border: rgba(5, 5, 177, 0.712) solid 5px;
+    margin: 5rem 25rem;
+    box-shadow: 3px 3px 4px #888888,
+                -3px -3px 4px #888888;
+}
+
+#edit-post-body h2 {
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    overflow: auto;
+}
+
+#edit-post-body label {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+textarea {
+    resize: none;
+}
+
+#edit-post-body button {
+    border: rgb(51, 42, 42) solid 2px;
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    margin: 1rem;
+    padding: 0.50rem 0.75rem;
+    font-size: 20px;
+}
+
+#edit-post-body button:hover {
+    background-color: rgb(51, 42, 42);
+}
+
+#edit-post-body button:active {
+    transform: translateY(1px);
+}

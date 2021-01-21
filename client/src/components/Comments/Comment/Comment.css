@@ -1,0 +1,44 @@
+
+.comment {
+    border: rgb(51, 42, 42) solid 4px;
+    margin: 1rem;
+}
+
+.comment h2{
+    background-color: rgb(51, 42, 42);
+    color: white;
+    padding: 0 1rem;
+    text-align: left;
+    margin-top: 0;
+}
+
+.comment a {
+    margin: 0 0;
+    text-decoration: none;
+    color: white;
+}
+
+.comment-info p {
+    padding: 0 4rem;
+    overflow: auto;
+}
+
+.like-comment {
+    margin: 0;
+    padding: 0 1rem;
+}
+
+.like-comment img {
+    display: inline-block;
+}
+
+.like-comment p {
+    display: inline-block;
+    padding: 0 2rem;
+    font-size: large;
+}
+
+#liked-button {
+    background-color: lightblue;
+    border: black solid 2px;
+}

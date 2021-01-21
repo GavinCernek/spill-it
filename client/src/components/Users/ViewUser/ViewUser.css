@@ -1,0 +1,35 @@
+
+.view-user-info {
+    display: inline-block;
+}
+
+.view-user-info h1 {
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    padding: 1rem 1rem;
+    box-shadow: 3px 3px 4px #888888,
+    -3px -3px 4px #888888;
+}
+
+.view-user-info p {
+    display: inline;
+    margin: 1rem 1rem;
+    font-weight: bold;
+}
+
+.view-user-buttons button {
+    margin: 2rem 2rem;
+    background-color: rgb(51, 42, 42);
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    font-weight: bolder;
+}
+
+.view-user-buttons button:hover {
+    background-color: rgba(5, 5, 177, 0.712);
+}
+
+.view-user-buttons button:active {
+    transform: translateY(1px);
+}

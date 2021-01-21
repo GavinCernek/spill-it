@@ -1,0 +1,76 @@
+
+.header-container {
+    background-color: rgb(51, 42, 42);
+    display: grid;
+    grid-template-rows: 0.25fr 0.5fr 0.25fr;
+    grid-template-areas:
+        "logo-container searchbar-container home-container";
+    margin-bottom: 2rem;
+    height: 75px;
+}
+
+.logo-container {
+    color: white;
+}
+
+.searchbar-container {
+    margin: 2rem 5rem;
+}
+
+.searchbar-container img {
+    vertical-align: top;
+}
+
+.searchbar-container input {
+    vertical-align: top;
+    padding-top: 0.5rem;
+    background-color: rgb(51, 42, 42);
+    border: none;
+    color: white;
+    border-bottom: white solid 1px;
+    margin-right: 0.25rem;
+}
+
+.searchbar-container input::placeholder {
+    color: white;
+}
+
+.home-container img {
+    margin-top: 2rem;
+    float: left;
+}
+
+.home-container button {
+    border: none;
+    color: white;
+    background-color: rgb(51, 42, 42);
+    font-size: 15px;
+    padding: 0.5rem 0.5rem;
+    margin: 2rem 1rem;
+    float: right;
+}
+
+.home-container button:hover {
+    background-color: white;
+    color: black;
+    transition: 250ms;
+}
+
+.home-container p {
+    color: white;
+}
+
+.user-profile {
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.user-profile p {
+    display: inline;
+}
+
+.user-profile a {
+    display: inline;
+    color: white;
+    text-underline-offset: 0.1rem;
+}

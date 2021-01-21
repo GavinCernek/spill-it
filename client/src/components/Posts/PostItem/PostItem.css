@@ -1,0 +1,99 @@
+
+.post {
+    margin: 2rem 25rem;
+    box-shadow: 2px 2px 3px #888888,
+                -2px -2px 3px #888888;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "post-button" 
+        "post-title"
+        "post-body";
+}
+
+.post-button {
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    text-align: right;
+    display: inline-block;
+}
+
+.view-post-button {
+    display: inline;
+}
+
+.view-post-button button {
+    background-color: rgb(51, 42, 42);
+    color: white;
+    border: none;
+    margin: 1rem 1rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: bolder;
+}
+
+.view-post-button button:hover {
+    background-color: rgb(241, 244, 248);
+    color: black;
+}
+
+.view-post-button button:active {
+    transform: translateY(1px);
+}
+
+.edit-delete-post-button {
+    display: inline;
+}
+
+.edit-delete-post-button button {
+    background-color: rgb(51, 42, 42);
+    color: white;
+    border: none;
+    margin: 1rem 1rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: bolder;
+}
+
+.edit-delete-post-button button:hover {
+    background-color: rgb(241, 244, 248);
+    color: black;
+}
+
+.edit-delete-post-button button:active {
+    transform: translateY(1px);
+}
+
+.post-author {
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    display: inline-block;
+    text-align: left;
+    padding: 0 1rem;
+    font-weight: bold;
+}
+
+.post-author p {
+    display: inline;
+}
+
+.post-author a {
+    display: inline;
+    color: white;
+    text-underline-offset: 0.1rem;
+}
+
+.post-title {
+    background-color: rgba(5, 5, 177, 0.712);
+    color: white;
+    overflow: auto;
+}
+
+.post-title h2 {
+    padding: 0 1rem;
+    text-align: left;
+}
+
+.post-body {
+    padding: 0 1rem;
+    overflow: auto;
+}
+
