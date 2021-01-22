@@ -1,59 +1,61 @@
 
-const mongoose = require('mongoose');
+// Written by: Gavin Cernek, 1/21/2021
 
-const postSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+const mongoose = require('mongoose');       
+
+const postSchema = mongoose.Schema({        // Schema for a post to Spill It
+    _id: mongoose.Schema.Types.ObjectId,        // Unique MongoDB id
     
-    title: {
+    title: {            // Post's title
         type: String,
         required: true
     },
     
-    postBody: {
+    postBody: {         // Post's body
         type: String,
         required: true
     },
     
-    author: {
+    author: {           // Post's author
         type: String,       
         required: true
     },
 
-    authorId: {
+    authorId: {             // Author's id 
         type: mongoose.Schema.Types.ObjectId,       
         ref: 'User',
         required: true
     },
 
-    likes: {
+    likes: {                    // How many likes the post has 
         type: Number,
         default: 0
     },
 
-    comments: [{
-        _id: mongoose.Schema.Types.ObjectId,
-        text: String,
-        likes: {
+    comments: [{                                // Comments array for the post
+        _id: mongoose.Schema.Types.ObjectId,        // Comment's unique MongoDB id
+        text: String,               // Comment's text
+        likes: {                        // How many likes the comment has
             type: Number,
             default: 0
         },
-        author: {
+        author: {               // Author of the comment
             type: String,
             required: true
         },
-        authorId: {
+        authorId: {                 // Author's id of the comment
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-        usersLiked: [{
+        usersLiked: [{                              // Users id's for who has likes the comment
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }],
-        isLiked: {
+        isLiked: {                      // Checks if the comment has been liked by the user before
             type: Boolean,
             default: false
         }
     }]
 });
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model('Post', postSchema);        // Exports the schema

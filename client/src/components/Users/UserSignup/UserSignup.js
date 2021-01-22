@@ -1,5 +1,7 @@
 
-import React, { useState } from "react";
+// Written by: Gavin Cernek, 1/21/2021
+
+import React, { useState } from "react";        // Imports for React
 
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -8,41 +10,41 @@ import Header from "../../Header/Header";
 import Input from "../../Input/Input";
 import "./UserSignup.css";
 
-const UserSignup = () => {
+const UserSignup = () => {          // UserSignup component
 
     const history = useHistory();
 
-    const [emailAddress, setEmailAddress] = useState("");
+    const [emailAddress, setEmailAddress] = useState("");       // State variables for UserSignup
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const setEmailAddressHandler = event => {
+    const setEmailAddressHandler = event => {       // Function that changes the email address
         setEmailAddress(event.target.value);
     };
 
-    const setUsernameHandler = event => {
+    const setUsernameHandler = event => {       // Function that changes the username
         setUsername(event.target.value);
     };
 
-    const setPasswordHandler = event => {
+    const setPasswordHandler = event => {       // Function that changes the password
         setPassword(event.target.value);
     };
 
-    const createUserHandler = async (event) => { 
+    const createUserHandler = async (event) => {        // Function to create a user 
         event.preventDefault();
 
         try {
-            const newUser = {
+            const newUser = {           // Creates a newUser object
                 email: emailAddress,
                 username: username,
                 password: password
             };
 
-            await axios.post("/user/signup", newUser);
-            history.push("/");
-        } catch (error) {
+            await axios.post("/user/signup", newUser);      // Sends a POST request to the signup route
+            history.push("/");                  // Pushes the user to the homepage
+        } catch (error) {               // Catch any errors
             if (error.response && error.response.data.message) {
-                alert(error.response.data.message);
+                alert(error.response.data.message);             // Display error messages
             } else {
                 alert("Something went wrong while trying to signup! Make sure your email address is valid!");
             };
@@ -54,7 +56,7 @@ const UserSignup = () => {
             <Header/>
 
             <div className="signup-info">
-                <h1>Signup for PostIT</h1>
+                <h1>Signup for Spill It</h1>
                 
                 <form onSubmit={createUserHandler}>
                     <Input

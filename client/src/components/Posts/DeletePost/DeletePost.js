@@ -1,5 +1,7 @@
 
-import React, { useState, useEffect } from "react";
+// Written by: Gavin Cernek, 1/21/2021
+
+import React, { useState, useEffect } from "react";         // Imports for React
 
 import axios from "axios";
 import { useHistory, useLocation } from "react-router-dom";
@@ -8,37 +10,37 @@ import Header from "../../Header/Header";
 import { getAccessToken } from "../../../accessToken";
 import "./DeletePost.css";
 
-const DeletePost = ({ match }) => {
+const DeletePost = ({ match }) => {             // DeletePost component
 
-    const [deleteTitle, setDeleteTitle] = useState("");
+    const [deleteTitle, setDeleteTitle] = useState("");         // State variables for DeletePost
     const [deleteBody, setDeleteBody] = useState("");
 
-    const history = useHistory();
+    const history = useHistory();           // History and location variables
     const location = useLocation();
 
-    useEffect(() => {
+    useEffect(() => {               // UseEffect that runs once on component mount
 
-        setDeleteTitle(location.state.title);
+        setDeleteTitle(location.state.title);       // Sets state variable information
         setDeleteBody(location.state.postBody);        
     }, []);
 
-    const deletePostHandler = async () => {
+    const deletePostHandler = async () => {         // Function for deleting a post
         try {
-            const deletePost = await axios.get("/posts/" + match.params.id);
+            const deletePost = await axios.get("/posts/" + match.params.id);    // Sends a GET request to grab the post to be deleted
 
             let accessToken = getAccessToken();
 
-            if (accessToken) {
-                await axios.delete("/posts/" + match.params.id, { data: deletePost, withCredentials: true, headers: {'Authorization': `Bearer ${accessToken}`} });
+            if (accessToken) {      // If the user is logged in, send a DELETE request with the access token
+                await axios.delete("/posts/" + match.params.id, { data: deletePost, headers: {'Authorization': `Bearer ${accessToken}`} });
 
-                history.push("/");
+                history.push("/");      // Push the user to the homepage
             };
-        } catch (error) {
+        } catch (error) {                   // Catch any errors
             alert("Something went wrong while trying to delete this post!");
         };
     };
 
-    const cancelDeleteHandler = () => {
+    const cancelDeleteHandler = () => {     // If the user cancels, send them to the homepage
         history.push("/");
     };
 

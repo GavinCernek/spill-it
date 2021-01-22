@@ -1,24 +1,26 @@
 
-import React, { useState } from "react";
+// Written by: Gavin Cernek, 1/21/2021
+
+import React, { useState } from "react";        // Imports for React
 
 import Input from "../../Input/Input";
 import TextArea from "../../TextArea/TextArea";
 import "./NewPost.css";
 
-const NewPost = props => { 
+const NewPost = props => {          // NewPost component
 
-    const [enteredTitle, setEnteredTitle] = useState("");
+    const [enteredTitle, setEnteredTitle] = useState("");       // Sets state variables for the NewPost
     const [enteredBody, setEnteredBody] = useState("");
 
-    const titleChangeHandler = event => {
+    const titleChangeHandler = event => {           // Function that changes the post's title
         setEnteredTitle(event.target.value);
     };
 
-    const bodyChangeHandler = event => {
+    const bodyChangeHandler = event => {            // Function that changes the post's body
         setEnteredBody(event.target.value);
     };
 
-    const submitPostHandler = event => {
+    const submitPostHandler = event => {            // Function that submits the post
         event.preventDefault();
         props.onAddPost(enteredTitle, enteredBody);
     };

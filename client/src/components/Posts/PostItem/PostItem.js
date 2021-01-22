@@ -1,29 +1,31 @@
 
-import React from "react";
+// Written by: Gavin Cernek, 1/21/2021
+
+import React from "react";          // Imports for React
 
 import { Link, useHistory } from "react-router-dom";
 
 import "./PostItem.css";
 
-const PostItem = props => {
+const PostItem = props => {         // PostItem component
 
-    const history = useHistory();
+    const history = useHistory();       // Variable for history
 
-    const viewPostButtonHandler = () => {
+    const viewPostButtonHandler = () => {                   // Function that pushes user to the ViewPost page
         history.push({ pathname: `/view/${props.postId}` });
     };
 
-    const editPostButtonHandler = () => {
+    const editPostButtonHandler = () => {               // Function that pushes the user to the EditPost page
         history.push({ pathname: `/edit/${props.postId}`, state: { title: props.title, postBody: props.postBody }});
     };
 
-    const deletePostButtonHandler = () => {
+    const deletePostButtonHandler = () => {             // Function that pushed the user to the DeletePost page
         history.push({ pathname: `/delete/${props.postId}`, state: { title: props.title, postBody: props.postBody }});
     };
 
     let authorButtons;
 
-    if (props.isAuth) {
+    if (props.isAuth) {             // If the user if the author of the post, display the edit and delete buttons
         authorButtons = (
             <div className="edit-delete-post-button">
                 <button onClick={editPostButtonHandler}>

@@ -1,5 +1,7 @@
 
-import React, { useState, useEffect } from "react";
+// Written by: Gavin Cernek, 1/21/2021
+
+import React, { useState, useEffect } from "react";     // Imports for React
 
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -10,10 +12,10 @@ import Loader from "../../Loader/Loader";
 import { getAccessToken } from "../../../accessToken";
 import "./ViewUser.css";
 
-const ViewUser = ({ match }) => {
+const ViewUser = ({ match }) => {               // ViewUser component
 
     const [isLoading, setIsLoading] = useState(false);
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState("");           // State variables for ViewUser
     const [writtenPosts, setWrittenPosts] = useState([]);
     const [numPosts, setNumPosts] = useState(0);
     const [numLikes, setNumLikes] = useState(0);
@@ -22,9 +24,9 @@ const ViewUser = ({ match }) => {
 
     const history = useHistory();
 
-    useEffect(() => {
+    useEffect(() => {               // UseEffect that runs when the id params change
 
-        const fetchUser = async () => {
+        const fetchUser = async () => {     // Function for fetching the user
             try {
                 setIsLoading(true);
 
@@ -32,33 +34,33 @@ const ViewUser = ({ match }) => {
 
                 let response;
 
-                if (accessToken) {
-                    response = await axios.get("/user/" + match.params.id, { withCredentials: true, headers: { "Authorization": `Bearer ${accessToken}` }});
-                } else {
+                if (accessToken) {      // If the user is logged in, send a GET request with the access token
+                    response = await axios.get("/user/" + match.params.id, { headers: { "Authorization": `Bearer ${accessToken}` }});
+                } else {            // If the user is not logged in, send a GET request
                     response = await axios.get("/user/" + match.params.id);
                 };
                
                 const responseData = response.data.docs;
 
                 setUsername(responseData.username);
-                setNumLikes(responseData.total_likes);
+                setNumLikes(responseData.total_likes);      // Update state variables
                 setIsUser(response.data.isAuth);
                 setPostAuthor(response.data.isAuth);
-            } catch (error) {
+            } catch (error) {                           // Catch any errors
                 alert("Something went wrong while fetching user!");
             };
         };
 
-        const fetchPosts = async () => {
-            try {
+        const fetchPosts = async () => {        // Function to fetch posts written by the user profile
+            try {               // Sends a GET request to retrieve the written posts
                 const response = await axios.get("/user/" + match.params.id + "/written_posts");
 
                 const responseData = await response.data.docs;
 
-                setWrittenPosts(responseData);
+                setWrittenPosts(responseData);      // Set state variables
                 setNumPosts(responseData.length);
                 setIsLoading(false);
-            } catch (error) {
+            } catch (error) {               // Display any errors
                 alert("Something went wrong while fetching user's posts!");
             };
         };
@@ -67,45 +69,45 @@ const ViewUser = ({ match }) => {
         fetchPosts();
     }, [match.params.id]);
 
-    if (isLoading) {
+    if (isLoading) {        // If the page is loading, return the loading spinner
         return <Loader />;
     };
 
-    const viewWrittenPostsHandler = async () => {
-        try {
+    const viewWrittenPostsHandler = async () => {       // Function for viewing the written posts
+        try {           // GET request that gets the written posts
             const response = await axios.get("/user/" + match.params.id + "/written_posts");
 
             const responseData = await response.data.docs;
         
-            setPostAuthor(true);
+            setPostAuthor(true);            // State variables updated
             setWrittenPosts(responseData);
-        } catch (error) {
+        } catch (error) {                   // Catch any errors
             alert("Something went wrong while fetching user's posts!");
         };
     };
 
-    const viewLikedPostsHandler = async () => {
+    const viewLikedPostsHandler = async () => {     // Function for viewing user's liked posts
         try {
             let accessToken = getAccessToken();
 
-            if (accessToken) {
-                const response = await axios.get("/user/" + match.params.id + "/liked_posts", { withCredentials: true, headers: { 'Authorization': `Bearer ${accessToken}` }});
+            if (accessToken) {      // If the user is logged in, send a GET request with the access token
+                const response = await axios.get("/user/" + match.params.id + "/liked_posts", { headers: { 'Authorization': `Bearer ${accessToken}` }});
 
-                setPostAuthor(false);
+                setPostAuthor(false);               // Update the state variables
                 setWrittenPosts(response.data.docs);
             };
-        } catch (error) {
+        } catch (error) {           // Catch any errors
             alert("Something went wrong while fetching user's liked posts!");
         }; 
     };
 
-    const logoutPageHandler = () => {
+    const logoutPageHandler = () => {           // Function to send the user to the logout page
         history.push({ pathname: "/logout", state: { username: username }});
     };
 
     let userButtons;
 
-    if (isUser) {
+    if (isUser) {               // If the user profile is the user's, then display the logout, view liked posts, and view written posts buttons
         userButtons = (
             <div className="view-user-buttons">
                 <button onClick={viewWrittenPostsHandler}>

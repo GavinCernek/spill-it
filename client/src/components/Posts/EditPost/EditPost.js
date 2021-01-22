@@ -1,5 +1,7 @@
 
-import React, { useState, useEffect } from "react";
+// Written by: Gavin Cernek, 1/21/2021
+
+import React, { useState, useEffect } from "react";     // Imports for React
 
 import axios from "axios";
 import { useHistory, useLocation } from "react-router-dom";
@@ -10,52 +12,52 @@ import TextArea from "../../TextArea/TextArea";
 import { getAccessToken } from "../../../accessToken";
 import "./EditPost.css";
 
-const EditPost = ({ match }) => {
+const EditPost = ({ match }) => {           // EditPost component
 
-    const [editedTitle, setEditedTitle] = useState("");
+    const [editedTitle, setEditedTitle] = useState("");         // State variables for EditPost
     const [editedBody, setEditedBody] = useState("");
     const [originalTitle, setOriginalTitle] = useState("");
 
-    const history = useHistory();
+    const history = useHistory();           // History and location variables
     const location = useLocation();
 
-    useEffect(() => {
+    useEffect(() => {           // UseEffect that runs once on component mount
 
-            setEditedTitle(location.state.title);
+            setEditedTitle(location.state.title);       // Sets state variables for EditPost
             setEditedBody(location.state.postBody);
             setOriginalTitle(location.state.title);
     }, []);
 
-    const editedTitleChangeHandler = event => {
+    const editedTitleChangeHandler = event => {     // Function that changes the post's title
         setEditedTitle(event.target.value);
     };
 
-    const editedBodyChangeHandler = event => {
+    const editedBodyChangeHandler = event => {      // Function that changes the post's body
         setEditedBody(event.target.value);
     };
 
-    const submitEditedPostHandler = async event => {
+    const submitEditedPostHandler = async event => {        // Function that submits the edited post data
         event.preventDefault();
 
         try{
-            const editedPost = [
+            const editedPost = [                                // Creates a new edited post
                 {propertyName: "title", value: editedTitle},
                 {propertyName: "postBody", value: editedBody}
             ];
             
             let accessToken = getAccessToken();
 
-            if (accessToken) {
-                await axios.patch("/posts/" + match.params.id, editedPost, { withCredentials: true, headers: {'Authorization': `Bearer ${accessToken}`} });
+            if (accessToken) {              // If the user is logged in, send a PATCH request with the access token
+                await axios.patch("/posts/" + match.params.id, editedPost, { headers: {'Authorization': `Bearer ${accessToken}`} });
 
-                history.push("/");
+                history.push("/");      // Push the user to the login page
             };
-        } catch (error) {
+        } catch (error) {               // Catch any errors
             alert("Something went wrong while trying to edit this post!");
         };
     };
 
-    const cancelEditHandler = () => {
+    const cancelEditHandler = () => {           // If the user cancels the edit, send them to the homepage
         history.push("/");
     };
 

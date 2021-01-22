@@ -1,18 +1,20 @@
 
-import React, { useState } from "react";
+// Written by: Gavin Cernek, 1/21/2021
+
+import React, { useState } from "react";            // Imports for React
 
 import TextArea from "../../TextArea/TextArea";
 import "./CommentBox.css";
 
-const CommentBox = props => {
+const CommentBox = props => {                   // CommentBox component
 
-    const [commentBody, setCommentBody] = useState("");
+    const [commentBody, setCommentBody] = useState("");       // State variable for the commentBody
 
-    const commentChangeHandler = event => {
+    const commentChangeHandler = event => {         // Function to change the comment's body
         setCommentBody(event.target.value);
     };
 
-    const submitCommentHandler = event => {
+    const submitCommentHandler = event => {         // Function to submit the comment
         event.preventDefault();
         props.onAddComment(commentBody);
     };

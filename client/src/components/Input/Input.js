@@ -1,9 +1,11 @@
 
+// Written by: Gavin Cernek, 1/21/2021 
+
 import React from "react";
 
 import "./Input.css";
 
-const Input = props => {
+const Input = props => {        // Input component
 
     return (
         <div className="input">

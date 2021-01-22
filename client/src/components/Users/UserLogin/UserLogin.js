@@ -1,5 +1,7 @@
 
-import React, { useState } from "react";
+// Written by: Gavin Cernek, 1/21/2021
+
+import React, { useState } from "react";        // Imports for React
 
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -9,37 +11,37 @@ import Input from "../../Input/Input";
 import { setAccessToken } from "../../../accessToken";
 import "./UserLogin.css";
 
-const UserLogin = () => {
+const UserLogin = () => {               // UserLogin component
 
     const history = useHistory();
 
-    const [emailAddress, setEmailAddress] = useState("");
+    const [emailAddress, setEmailAddress] = useState("");       // State variables for UserLogin
     const [password, setPassword] = useState("");
 
-    const setEmailAddressHandler = event => {
+    const setEmailAddressHandler = event => {       // Function that changes the email address
         setEmailAddress(event.target.value);
     };
 
-    const setPasswordHandler = event => {
+    const setPasswordHandler = event => {       // Function that changes the password
         setPassword(event.target.value);
     };
 
-    const loginUserHandler = async (event) => { 
+    const loginUserHandler = async (event) => {         // Function that submits the login data
         event.preventDefault();
 
         try {
-            const loginUser = {
+            const loginUser = {         // Creates a loginUser object 
                 email: emailAddress,
                 password: password
             };
 
-            const response = await axios.post("/user/login", loginUser, { withCredentials: true });
+            const response = await axios.post("/user/login", loginUser);  // Sends a POST request using the loginUser
 
-            await setAccessToken(response.data.accessToken);
-            history.push("/");
-        } catch (error) {
+            await setAccessToken(response.data.accessToken);        // Sets the access token
+            history.push("/");                              // Pushes the user to the homepage 
+        } catch (error) {               // Catch any errors
             if (error.response && error.response.data.message) {
-                alert(error.response.data.message);
+                alert(error.response.data.message);                 // Display error messages
             } else {
                 alert("Something went wrong while trying to login!");
             };
@@ -51,7 +53,7 @@ const UserLogin = () => {
             <Header />
 
             <div className="login-info">
-                <h1>Login to Shortie</h1>
+                <h1>Login to Spill It</h1>
 
                 <form onSubmit={loginUserHandler}>
                     <Input

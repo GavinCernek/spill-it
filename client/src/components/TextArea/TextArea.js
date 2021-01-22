@@ -1,9 +1,11 @@
 
+// Written by: Gavin Cernek, 1/21/2021
+
 import React from "react";
 
 import "./TextArea.css";
 
-const TextArea = props => {
+const TextArea = props => {     // TextArea component
 
     return (
         <div className="textarea">
